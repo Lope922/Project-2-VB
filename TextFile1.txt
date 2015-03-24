@@ -1,0 +1,36 @@
+﻿  '' Notes 
+    ''/////////////////////////////////////////////////////////////////////////////////////////////////
+    '    Two Steps 
+    '    1) Create a HTTP URL request to the website 
+    '    - see API provider on documentation of how to contruct URL for specific needs 
+    '    - Can test your URL by pasting it in the address bar of browser ( it will output xml json or xaml ) 
+
+    '    2) Analyze the data and see how to intrepret it. 
+    '- it can return XML Json , image, file, or bytestream (VB prefers XML) 
+	learning the tags i can extract the information i need. 
+	_________________________
+	my wunderground API key |
+	ede6553743c4d570		|
+	_________________________
+
+	URL for wunderground 
+	-conditions
+	http://api.wunderground.com/api/ede6553743c4d570/conditions/q/MN/Minneapolis.xml
+
+	-forecast 
+	http://www.wunderground.com/US/MN/Minneapolis.html
+	
+
+
+Resources
+
+'''//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+fLICKr KEY 
+
+420139cbe484022c5c3ab008fbb02e34
+
+Secret:
+fea54110e6a94ccc
+
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
