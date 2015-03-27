@@ -17,12 +17,19 @@
 	-conditions
 	http://api.wunderground.com/api/ede6553743c4d570/conditions/q/MN/Minneapolis.xml
 
-	-forecast 
-	http://www.wunderground.com/US/MN/Minneapolis.html
+	-forecast example - note comes back in JSON format.  
+	http://api.wunderground.com/api/ede6553743c4d570/forecast/q/CA/San_Francisco.json
 	
+	JSON WEATHER UNDERGROUND LINK - 
+	http://www.wunderground.com/weather/api/d/docs?d=data/forecast&MR=1
+
+	Microsoft Developer Network documentation for json and xml (thought this might come in handy)
+	https://msdn.microsoft.com/en-us/library/bb924435%28v=vs.110%29.aspx
+
+	Selecting node Path in the xml Documentation. (reccomended from slides)
+	 https://msdn.microsoft.com/en-us/library/d271ytdx(v=vs.110).aspx
 
 
-Resources
 
 '''//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -34,3 +41,44 @@ Secret:
 fea54110e6a94ccc
 
 \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+
+
+helpful code 
+ Private Sub currentWeatherBackgroundWorker1_DoWork(sender As Object, e As System.ComponentModel.DoWorkEventArgs) Handles currentWeatherBackgroundWorker1.DoWork
+        Try
+            Dim url As String = CStr(e.Argument)
+
+            Dim conditionsURL As String = "http://api.wunderground.com/api/ede6553743c4d570/conditions/q/MN/Minneapolis.xml"
+
+            Dim webRequestConditions As WebRequest = WebRequest.Create(conditionsURL)
+
+            Dim conditionsResponseStream As Stream = webRequestConditions.GetResponse.GetResponseStream()
+        
+
+        Dim xmlWeatherReader As New XmlDocument
+
+        xmlWeatherReader.Load(conditionsResponseStream)
+
+        ''SelectSingleNode looks for the first node that matches the argument 
+        ''A String prefaced by // searches for a nodes matching string in the whole document 
+        ''so weather // weather looks for the first <weather> node 
+        ''note that if you omit the // then it will only search at the current level in the document 
+        '' in this case , that' the immediate child element of the root element 
+
+            Dim weatherNode As XmlNode = xmlWeatherReader.SelectSingleNode("//weather")
+
+        Dim tempStringNode As XmlNode = xmlWeatherReader.SelectSingleNode("//temperature_string")
+
+            '' not a node. Just the resutls that will be printed on the label. 
+        Dim resultString As String = "Current Weather: " & weatherNode.InnerText & ", " & tempStringNode.InnerText
+
+        'ToDO hanndle errors eg. invalid key, server not Found, No internet connection. 
+
+        e.Result = resultString
+        Catch ex As Exception
+            ' no internet connection 
+        End Try
+
+    End Sub
+
+   
