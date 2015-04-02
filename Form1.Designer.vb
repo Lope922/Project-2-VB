@@ -28,6 +28,9 @@ Partial Class Form1
         Me.txtBoxCityNameSearch = New System.Windows.Forms.TextBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.ComboBoxDropDownState = New System.Windows.Forms.ComboBox()
+        Me.currentWeatherBackgroundWorker = New System.ComponentModel.BackgroundWorker()
+        Me.statusLabel = New System.Windows.Forms.Label()
+        Me.cityToBeDisplayedLabel = New System.Windows.Forms.Label()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -84,11 +87,34 @@ Partial Class Form1
         Me.ComboBoxDropDownState.TabIndex = 11
         Me.ComboBoxDropDownState.Text = "State"
         '
+        'currentWeatherBackgroundWorker
+        '
+        '
+        'statusLabel
+        '
+        Me.statusLabel.AutoSize = True
+        Me.statusLabel.Location = New System.Drawing.Point(256, 185)
+        Me.statusLabel.Name = "statusLabel"
+        Me.statusLabel.Size = New System.Drawing.Size(46, 13)
+        Me.statusLabel.TabIndex = 12
+        Me.statusLabel.Text = "Status..."
+        '
+        'cityToBeDisplayedLabel
+        '
+        Me.cityToBeDisplayedLabel.AutoSize = True
+        Me.cityToBeDisplayedLabel.Location = New System.Drawing.Point(262, 219)
+        Me.cityToBeDisplayedLabel.Name = "cityToBeDisplayedLabel"
+        Me.cityToBeDisplayedLabel.Size = New System.Drawing.Size(102, 13)
+        Me.cityToBeDisplayedLabel.TabIndex = 13
+        Me.cityToBeDisplayedLabel.Text = "City To be displayed"
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(617, 390)
+        Me.Controls.Add(Me.cityToBeDisplayedLabel)
+        Me.Controls.Add(Me.statusLabel)
         Me.Controls.Add(Me.ComboBoxDropDownState)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.txtBoxCityNameSearch)
@@ -108,5 +134,8 @@ Partial Class Form1
     Friend WithEvents txtBoxCityNameSearch As System.Windows.Forms.TextBox
     Friend WithEvents Label1 As System.Windows.Forms.Label
     Friend WithEvents ComboBoxDropDownState As System.Windows.Forms.ComboBox
+    Friend WithEvents currentWeatherBackgroundWorker As System.ComponentModel.BackgroundWorker
+    Friend WithEvents statusLabel As System.Windows.Forms.Label
+    Friend WithEvents cityToBeDisplayedLabel As System.Windows.Forms.Label
 
 End Class

@@ -48,7 +48,7 @@ helpful code
         Try
             Dim url As String = CStr(e.Argument)
 
-            Dim conditionsURL As String = "http://api.wunderground.com/api/ede6553743c4d570/conditions/q/MN/Minneapolis.xml"
+            Dim conditionsURL As String = "http://api.wunderground.com/api/ede6553743c4d570/forecast/q/MN/Minneapolis.xml"
 
             Dim webRequestConditions As WebRequest = WebRequest.Create(conditionsURL)
 

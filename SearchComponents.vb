@@ -12,7 +12,13 @@
             Return state
         End Get
         Set(value As String)
-            state = value
+            If state.ToUpper.Length > 2 Then
+                MessageBox.Show("Sate must be two letter word and Uppercase. Use dropdown box to select State. ")
+            ElseIf state.Equals("") Then
+                MessageBox.Show("Please enter a state to search ")
+            Else : state = value
+            End If
+
         End Set
     End Property
 
@@ -21,9 +27,14 @@
             Return city
         End Get
         Set(value As String)
-            city = value
+            If city.Equals("") Then
+                MessageBox.Show("Please enter a city to search for travel details")
+            Else : city = value
+            End If
         End Set
     End Property
+
+
 
     '' need to measure city name and if it is longer than 3 characters add an underscore if there is a space between words. 
 
@@ -32,7 +43,7 @@
 
     '' need to override the tostring to get this object as a string. 
     Public Overrides Function ToString() As String
-        Return city & "/" & state
+        Return state & "/" & city
     End Function
 
 
